@@ -2,7 +2,9 @@ package sg.edu.rp.c346.id20042303.demotodolist;
 
 import androidx.annotation.NonNull;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class ToDoItem {
     private String title;
@@ -31,38 +33,16 @@ public class ToDoItem {
 
     @Override
     public String toString() {
-        String str = date.get(Calendar.DAY_OF_MONTH) + "/" + date.get(Calendar.MONTH)
-                + "/" + date.get(Calendar.YEAR) + " (" + getDay(date.get(Calendar.DAY_OF_WEEK)) + ")";
+        Date date = this.date.getTime();
+
+
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy (EEEE)");
+        String date1 = format1.format(date);
+        String str = date1;
+
 
         return str;
     }
 
-    private String getDay(int day) {
-        switch (day) {
-            case 1:
-                return "Monday";
 
-            case 2:
-                return "Tuesday";
-
-            case 3:
-                return "Wednesday";
-
-            case 4:
-                return "Thursday";
-
-            case 5:
-                return "Friday";
-
-            case 6:
-                return "Saturday";
-
-            case 7:
-                return "Sunday";
-
-            default:
-                return "";
-        }
-
-    }
 }
